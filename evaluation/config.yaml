@@ -1,0 +1,340 @@
+# FOR EVALUATION
+
+paths:
+  base_dir: "../"
+
+dataset_preparation:
+  heldout_test_size: 0.3
+
+dataset_files:
+  CTGAN: "ctgan.csv"
+  TabDiff: "tabdiff.csv"
+  OncoSynth: "oncosynth.csv"
+  generation_train: "splits/real_generation_train.csv"
+  downstream_train: "splits/real_downstream_train.csv"
+  heldout_test: "splits/real_heldout_test.csv"
+
+cohort_configs:
+  demo:
+    cleaned_path: "data/clean/demo_cohort.csv"
+    real_dir: "data/prepared/demo_out/"
+    model_dir: "data/models/demo_out/"
+    synth_dir: "data/runs/demo_out/"
+    evaluation_dir: "data/evaluation/demo_out/"
+
+    categorical_covariates:
+      - cat_cov_1
+      - cat_cov_2
+      - cat_cov_3
+      - year_of_diagnosis
+
+    continuous_covariates:
+      - cont_cov_1
+      - cont_cov_2
+      - cont_cov_3
+      
+    treatment: Treatment_Group
+    outcome_censoring: Event_Observed
+    outcome_time: Survival_Months
+    year_variable: year_of_diagnosis
+
+
+    label_maps:
+      cat_cov_1:
+        0: name_cat_0
+        1: name_cat_1
+      cat_cov_2:
+        0: name_cat_0
+        1: name_cat_1
+        2: name_cat_2
+      cat_cov_3:
+        0: name_cat_0
+        1: name_cat_1
+        2: name_cat_2
+        3: name_cat_3
+        4: name_cat_4
+        5: name_cat_5
+      year_of_diagnosis:
+        1: 2007
+        2: 2008
+        3: 2009
+        4: 2010
+        5: 2011
+      Treatment_Group:
+        0: Control
+        1: Treatment
+      Event_Observed:
+        0: Censored
+        1: Event
+  
+
+    column_display_names:
+      year_of_diagnosis: "Year of diagnosis"
+      cat_cov_1: "Categorical covariate 1"
+      cat_cov_2: "Categorical covariate 2"
+      cat_cov_3: "Categorical covariate 3"
+      cont_cov_1: "Continuous covariate 1"
+      cont_cov_2: "Continuous covariate 2"
+      cont_cov_3: "Continuous covariate 3"
+      Treatment_Group: "Treatment"
+      Event_Observed: "Censoring"
+      Survival_Months: "Time-to-event (months)"
+
+  breast:
+    cleaned_path: "data/clean/breast_cohort.csv"
+    real_dir: "data/prepared/breast_reps/"
+    model_dir: "data/models/breast_reps/"
+    synth_dir: "data/runs/breast_reps/"
+    evaluation_dir: "data/evaluation/breast_reps/"
+
+    categorical_covariates:
+      - Year_of_Diagnosis
+      - ER_Status
+      - PR_Status
+      - Race_Origin
+      - Marital_Status
+      - Grade_Recode
+
+    continuous_covariates:
+      - Tumor_Size
+      - Nodes_Positive
+      - Age_at_Diagnosis
+      - Household_Income
+
+    treatment: Treatment_Group
+    outcome_censoring: Event_Observed
+    outcome_time: Survival_Months
+    year_variable: Year_of_Diagnosis
+
+    label_maps:
+      Race_Origin:
+        0: White
+        1: Black
+        2: Hispanic
+        3: other/unknown
+      Year_of_Diagnosis:
+        2007: 2007
+        2008: 2008
+        2009: 2009
+        2010: 2010
+        2011: 2011
+        2012: 2012
+        2013: 2013
+        2014: 2014
+        2015: 2015
+      Grade_Recode:
+        0: unknown
+        1: I 
+        2: II 
+        3: III 
+        4: IV 
+      ER_Status:
+        0: negative
+        1: positive
+        2: other
+        3: unknown
+      PR_Status:
+        0: negative
+        1: positive
+        2: other
+        3: unknown
+      Marital_Status:
+        0: married
+        1: single
+        2: divorced
+        3: widowed
+        4: unknown
+      Treatment_Group:
+        0: Adjuvant 
+        1: Neoadjuvant 
+      Event_Observed:
+        0: Censored
+        1: Event (death)
+
+    column_display_names:
+      Year_of_Diagnosis: "Year of diagnosis"
+      Tumor_Size: "Tumor size"
+      Nodes_Positive: "Positive nodes"
+      Age_at_Diagnosis: "Age"
+      Race_Origin: "Race"
+      Grade_Recode: "Tumor grade"
+      ER_Status: "ER status"
+      PR_Status: "PR status"
+      Marital_Status: "Marital status"
+      Household_Income: "Household income"
+      Treatment_Group: "Treatment"
+      Event_Observed: "Censoring"
+      Survival_Months: "Time-to-event (months)"
+
+  lung:
+    cleaned_path: "data/clean/lung_cohort.csv"
+    real_dir: "data/prepared/lung_reps/"
+    model_dir: "data/models/lung_reps/"
+    synth_dir: "data/runs/lung_reps/"
+    evaluation_dir: "data/evaluation/lung_reps/"
+
+    categorical_covariates:
+      - Sex
+      - Year_of_Diagnosis
+      - Race_Origin
+      - Primary_Site 
+      - Laterality
+      - AJCC_T
+      - AJCC_N
+      - AJCC_M
+      - Marital_Status
+      - Surgery
+      - Chemotherapy
+
+    continuous_covariates:
+      - Age
+      - Household_Income
+      
+    treatment: Treatment_Group
+    outcome_censoring: Event_Observed
+    outcome_time: Survival_Months
+    year_variable: Year_of_Diagnosis
+
+    label_maps:
+      Sex:
+        0: male
+        1: female
+      Race_Origin:
+        0: White
+        1: Black
+        2: Hispanic
+        3: other/unknown
+      Marital_Status:
+        0: married
+        1: single
+        2: divorced
+        3: widowed
+        4: unknown
+      AJCC_T:
+        0: T0
+        1: T1
+        2: T2
+        3: T3
+        4: T4
+      AJCC_N:
+        0: N0
+        1: N1
+        2: N2
+        3: N3
+      AJCC_M:
+        0: M0
+        1: M1
+      Year_of_Diagnosis:
+        2004: 2004
+        2005: 2005
+        2006: 2006
+        2007: 2007
+        2008: 2008
+        2009: 2009
+        2010: 2010
+        2011: 2011
+        2012: 2012
+        2013: 2013
+        2014: 2014
+        2015: 2015
+      Primary_Site:
+        0: main bronchus
+        1: upper lobe
+        2: middle lobe
+        3: lower lobe
+        4: overlap
+        5: unspecified
+      Laterality:
+        0: left
+        1: right
+        2: other
+      Treatment_Group:
+        0: No radiotherapy
+        1: Radiotherapy
+      Event_Observed:
+        0: Censored
+        1: Event (death)
+
+    column_display_names:
+      Year_of_Diagnosis: "Year of diagnosis"
+      Sex: "Sex"
+      Age: "Age"
+      Race_Origin: "Race"
+      Marital_Status: "Marital status"
+      Primary_Site: "Primary site"
+      Laterality: "Laterality"
+      AJCC_T: "AJCC T"
+      AJCC_N: "AJCC N"
+      AJCC_M: "AJCC M"
+      Marital_Status: "Marital status"
+      Surgery: "Surgery"
+      Chemotherapy: "Chemotherapy"
+      Household_Income: "Household income"
+      Treatment_Group: "Treatment"
+      Event_Observed: "Censoring"
+      Survival_Months: "Time-to-event (months)"
+
+  
+evaluation: 
+  demo:
+    random_seed: 42
+    rmst_horizon: 96
+    n_trees_csf: 500
+    min_node_size_csf: 70 
+    honesty_csf: false
+    sample_fraction_csf: 0.5 
+    honesty_fraction_csf: 0.7
+    mtry_csf: 10
+    alpha_csf: 0.05
+    imbalance_penalty_csf: 0
+  breast:
+    random_seed: 42
+    rmst_horizon: 36
+    n_trees_csf: 3000
+    min_node_size_csf: 50 
+    honesty_csf: true
+    sample_fraction_csf: 0.5 
+    honesty_fraction_csf: 0.7
+    mtry_csf: 5
+    alpha_csf: 0.05
+    imbalance_penalty_csf: 0
+  lung:
+    random_seed: 42
+    rmst_horizon: 36
+    n_trees_csf: 2500 
+    min_node_size_csf: 90 
+    honesty_csf: true
+    sample_fraction_csf: 0.5
+    honesty_fraction_csf: 0.7
+    mtry_csf: 6
+    alpha_csf: 0.05
+    imbalance_penalty_csf: 0
+
+
+plotting:
+  dpi: 300
+  figure_width: 13
+  font_size: 20
+  annotation_font_size: 20
+  colors:
+    generation_train: "#7D7C7C"
+    heldout_test: "#7D7C7C"
+    downstream_train: "#7D7C7C"
+    CTGAN: "#3A8B95"
+    TabDiff: "#065084"
+    OncoSynth: "#FB9E3A"
+  style: default
+
+model_order:
+  - CTGAN
+  - TabDiff
+  - OncoSynth
+
+model_display_names:
+  CTGAN: "CTGAN"
+  TabDiff: "TabDiff"
+  OncoSynth: "OncoSynth"
+  generation_train: "Original"
+  heldout_test: "Heldout Test"
+  downstream_train: "Original"
+

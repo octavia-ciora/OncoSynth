@@ -1,0 +1,98 @@
+# FOR GENERATION
+
+paths:
+  base_dir: "../"
+
+dataset_preparation:
+  heldout_test_size: 0.3
+
+dataset_files:
+  CTGAN: "ctgan.csv"
+  TabDiff: "tabdiff.csv"
+  OncoSynth: "oncosynth.csv"
+  generation_train: "splits/real_generation_train.csv"
+  downstream_train: "splits/real_downstream_train.csv"
+  heldout_test: "splits/real_heldout_test.csv"
+
+
+cohort_configs:
+  breast:
+    cleaned_path: "data/clean/breast_cohort.csv"
+    real_dir: "data/prepared/breast_reps/"
+    model_dir: "data/models/breast_reps/"
+    synth_dir: "data/runs/breast_reps/"
+    evaluation_dir: "data/evaluation/breast_reps/"
+
+    categorical_covariates:
+      - Year_of_Diagnosis
+      - ER_Status
+      - PR_Status
+      - Race_Origin
+      - Marital_Status
+      - Grade_Recode
+
+    continuous_covariates:
+      - Tumor_Size
+      - Nodes_Positive
+      - Age_at_Diagnosis
+      - Household_Income
+      
+    treatment: Treatment_Group
+    outcome_censoring: Event_Observed
+    outcome_time: Survival_Months
+    year_variable: Year_of_Diagnosis
+
+
+  lung:
+    cleaned_path: "data/clean/lung_cohort.csv"
+    real_dir: "data/prepared/lung_reps/"
+    model_dir: "data/models/lung_reps/"
+    synth_dir: "data/runs/lung_reps/"
+    evaluation_dir: "data/evaluation/lung_reps/"
+
+    categorical_covariates:
+      - Sex
+      - Year_of_Diagnosis
+      - Race_Origin
+      - Primary_Site 
+      - Laterality
+      - AJCC_T
+      - AJCC_N
+      - AJCC_M
+      - Marital_Status
+      - Surgery
+      - Chemotherapy
+
+    continuous_covariates:
+      - Age
+      - Household_Income
+      
+    treatment: Treatment_Group
+    outcome_censoring: Event_Observed
+    outcome_time: Survival_Months
+    year_variable: Year_of_Diagnosis
+
+  demo:
+    cleaned_path: "data/clean/demo_cohort.csv"
+    real_dir: "data/prepared/demo_out/"
+    model_dir: "data/models/demo_out/"
+    synth_dir: "data/runs/demo_out/"
+    evaluation_dir: "data/evaluation/demo_out/"
+
+    categorical_covariates:
+      - cat_cov_1
+      - cat_cov_2
+      - cat_cov_3
+      - year_of_diagnosis
+
+    continuous_covariates:
+      - cont_cov_1
+      - cont_cov_2
+      - cont_cov_3
+      
+    treatment: Treatment_Group
+    outcome_censoring: Event_Observed
+    outcome_time: Survival_Months
+    year_variable: year_of_diagnosis
+
+  

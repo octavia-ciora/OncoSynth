@@ -1,0 +1,3 @@
+raw_path: ../data/raw/lung_seer_raw.csv
+output_dir: ../data/clean/
+output_file: lung_cohort.csv

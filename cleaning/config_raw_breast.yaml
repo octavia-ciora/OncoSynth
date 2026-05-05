@@ -1,0 +1,3 @@
+raw_path: ../data/raw/breast_seer_raw.csv
+output_dir: ../data/clean/
+output_file: breast_cohort.csv

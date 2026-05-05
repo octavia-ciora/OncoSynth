@@ -1,0 +1,14 @@
+data/*
+
+!data/clean/
+data/clean/*
+!data/clean/demo_cohort.csv
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+*.egg
+.Python
